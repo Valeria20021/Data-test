@@ -2,10 +2,9 @@ import pandas as pd
 
 def read_csv(path):
   
-    data_csv = pd.read_csv(path, sep='|')
-    #formato key-value que retorna diccionarios es records en pandas
-    data = data_csv.to_dict('records')
-
+    csv_data = pd.read_csv(path, sep='|')
+    #formato key-value que retorna diccionarios
+    data = csv_data.to_dict('records')
     return data
 
 
