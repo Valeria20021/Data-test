@@ -1,8 +1,18 @@
-# Lectura del archivo coordenates.csv
+# app 
 
-El proceso de lectura y revision del archivo se encuentra en read_csv.py, este se puede llamar desde otro archivo o como script
+```sh
+git clone
+cd app
+source env/bin/activate
+pip3 install -r requirements.txt
+```
+
+# read_csv.py
+
+El proceso de lectura y revision del archivo coordenates.csv se encuentra en este modulo. Este se puede llamar desde otro archivo o ejecutar como script con las siguientes instrucciones
 
 ```sh
 import read_csv
 python3 read_csv.py
 ```
+
