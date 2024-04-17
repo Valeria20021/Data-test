@@ -16,4 +16,6 @@ El proceso de lectura y revision del archivo coordenates.csv se encuentra en est
 import read_csv
 python3 read_csv.py
 ```
+# Git Flow
 
+El flujo de trabajo consta de 3 ramas; master, develop y feature/send_bd. En la rama feature/send_db se realizan pequeños cambios sobre esta caractiristica para después unirlos a la rama de desarrollo mediante git merge para después unirla con la master.
