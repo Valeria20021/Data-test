@@ -2,28 +2,39 @@ import csv
 
 def read_csv(path):
   
-  #With para cerrar archivo automaticamente al terminar ejecucion
+  #Cierre de archivo automaticamente al terminar ejecucion
   with open(path, 'r') as csvfile:
-
     reader = csv.reader(csvfile, delimiter='|')
-    #Primera linea iterada definida como header
     header = next(reader)
     data = []
-    
-    #recorrer archivo CSV
+    #recorre archivo CSV
     for row in reader:
-      
       iterable = zip(header, row)
-      #dar formato de diccionario
-      coordenates = {key: value for key, value in iterable}
-     
-      data.append(coordenates)
+      #Formato de diccionario
+      coordinates = {key: value for key, value in iterable}
+      data.append(coordinates)
     return data
 
 
+def format_coordinates_get(data):
+    #Formato para GET
+    formatted_coordinates = []
+    for item in data:
+        lat = item['lat'].replace("'", "")
+        lon = item['lon'].replace("'", "")
+        formatted_coordinates.append(f"lat={lat}&lon={lon}")
+    return formatted_coordinates
+
+
+
 if __name__ == '__main__':
-  # Envio de parametro path a la funcion read_csv
-  data = read_csv('./coordenates.csv')
-  print(data)
+    
+    #Definicion de archivo
+    csv_path_file = './coordenates.csv'
+    coordinate_data = read_csv(csv_path_file)
+    formatted_coordinates = format_coordinates_get(coordinate_data)
+    for item in formatted_coordinates:
+        print(item)
+
 
 
