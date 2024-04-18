@@ -4,7 +4,7 @@ import mysql.connector
 host = "localhost"
 user = "root"
 password = ""
-dbname = "cripto_bd"
+dbname = "postcodes_db"
 
 
 try:
