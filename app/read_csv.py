@@ -39,5 +39,4 @@ def format_coordinates_get(data):
          if lat != 'nan' and lon != 'nan':
           formatted_coordinates.append(f"lon={lon}&lat={lat}")
 
-
      return formatted_coordinates

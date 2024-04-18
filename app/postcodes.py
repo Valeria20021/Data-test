@@ -16,5 +16,3 @@ def get_postcode(item):
      postcodes = [codes.get('postcode', 'N/A') for codes in result]
      return postcodes
 
-
-

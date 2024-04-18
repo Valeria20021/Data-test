@@ -6,6 +6,7 @@ user = "root"
 password = ""
 dbname = "cripto_bd"
 
+
 try:
     # Conexión a la base de datos
     conn = mysql.connector.connect(
