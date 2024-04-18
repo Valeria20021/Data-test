@@ -1,5 +1,7 @@
 # app 
 
+Para iniciar el proyecto es necesario ingresar en la carpeta de app y activar el ambiente virtual para despues instalar los requerimientos del porgrama.
+
 ```sh
 git clone
 cd app
@@ -8,7 +10,7 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
-# read_csv.py
+# Archivo read_csv.py
 
 El proceso de lectura y revision del archivo coordenates.csv se encuentra en este modulo. Este se puede llamar desde otro archivo o ejecutar como script con las siguientes instrucciones
 
