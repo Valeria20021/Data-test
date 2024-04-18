@@ -2,9 +2,11 @@ import pandas as pd
 import numpy as np
 import os
 
+
 def read_csv(path):
   if not os.path.exists(path):
     raise FileNotFoundError(f'No se encuentra el archivo {path}')
+
 
   csv_data = pd.read_csv(path, sep='|').replace("nan", np.nan)
 
@@ -22,6 +24,7 @@ def read_csv(path):
 
     #formato key-value que retorna diccionarios
   data = csv_data.to_dict('records')
+
   return data
 
 
@@ -40,3 +43,4 @@ def format_coordinates_get(data):
           formatted_coordinates.append(f"lon={lon}&lat={lat}")
 
      return formatted_coordinates
+
