@@ -19,7 +19,7 @@ python3 read_csv.py
 # Git Flow
 
 El flujo de trabajo consta de 3 ramas; master, develop y feature/send_bd. 
-En la rama feature/send_db se realizan pequeños cambios sobre esta caractiristica para después unirlos a la rama de desarrollo
+En la rama feature/send_db se realizan pequeños cambios sobre esta caracteristica para después unirlos a la rama de desarrollo
 ```sh
 git checkout feature/send_bd
 git add .
