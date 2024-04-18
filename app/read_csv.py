@@ -29,6 +29,7 @@ def format_coordinates_get(data):
     
      #Formato para GET
      formatted_coordinates = []
+
      
      for item in data:
          lat = str(item['lat']).replace("'", "").replace(",",".")
