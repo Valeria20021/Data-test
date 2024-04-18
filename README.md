@@ -9,6 +9,8 @@ python3 -m venv env
 source env/bin/activate
 pip3 install -r requirements.txt
 ```
+coon reload para cada vez que se haga un cambio se recargue
+Levantar la API uvicorn main:app --reload
 
 # Archivo read_csv.py
 
