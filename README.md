@@ -26,14 +26,14 @@ git merge develop
 # Modelo
 
 ![image](modelo.png)
-## Model:
+### Model:
 read_csv.py = Lee el archivo csv con ruta contenida en una variable de entorno, realiza limpieza de datos verificando que no existan valores duplicados o nulos, así mismo valida errores dentro del archivo. Formatea la data para ser enviada como GET, retorna la data formateada para luego ser llamada desde el archivo main.py
 
-## View-Controller:
+### View-Controller:
 main.py = La función run() recibe la data en forma de lista que retorna el modelo read_csv.py, por cada iteración de la lista llama a la función postcodes_api.get_postcode() pasando como parámetro cada item, dentro de la función se declara un limitador que controla las peticiones. Finalmente crea y retorna una lista con la información recibida de postcodes.api.py.
 La función send_to_bd_codes() recibe la lista generada en la función run() para enviarla al endpoint “/add_postcodes” y realizar la inserción de cada item de la lista a la base de datos MongoDB.
 
-## Controller:
+### Controller:
 Postcodes_api.py= mediante la función get_postcode() se recibe cada item enviado por la funcion run() del main.py, luego consume la API https://api.postcodes.io/postcodes? enviando por método GET cada dato (coordenadas lat y lon). Finalmente, retorna la respuesta del servicio y una lista con los códigos postales de cada coordenada, la cual es recibida por la función run() para posteriormente ser insertada a la base de datos por la función send_to_bd_codes().
 
 

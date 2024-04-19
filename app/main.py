@@ -8,7 +8,7 @@ import subprocess
 
 app = FastAPI()
 
-RATE_LIMIT = 2
+RATE_LIMIT = 50
 
 def run():
     formatted_coordinates = read_csv.format_coordinates_get()
