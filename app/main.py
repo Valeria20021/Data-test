@@ -1,4 +1,4 @@
-import postcodes
+import postcodes_api
 import read_csv
 from mongo_connect import collection
 from send_logs import log_message
@@ -11,9 +11,7 @@ app = FastAPI()
 RATE_LIMIT = 5
 
 def run():
-    csv_path_file = './coordenates.csv'
-    coordinate_data = read_csv.read_csv(csv_path_file)
-    formatted_coordinates = read_csv.format_coordinates_get(coordinate_data)
+    formatted_coordinates = read_csv.format_coordinates_get()
 
     requests_sent = 0
     list_postcodes_insert = []
@@ -21,7 +19,7 @@ def run():
     for item in formatted_coordinates:
         try:
             #Ejecuta funcion de obtener postcode para cada coordenada
-            outcode, extra_data= postcodes.get_postcode(item)
+            outcode, extra_data= postcodes_api.get_postcode(item)
             requests_sent += 1
 
         except ValueError as e:
