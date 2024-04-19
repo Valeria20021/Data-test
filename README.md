@@ -40,3 +40,13 @@ Finalmente pasar los cambios de develop a la rama master
 git checkout master
 git merge develop
 ```
+
+# Docker
+Para la construccion del contenedor, luego lanzarlo para que se cree y se inicie, luego revisar el estado, ingresar al ambiente
+```sh
+sudo docker-compose build
+sudo docker-compose up -d
+sudo docker-compose ps
+sudo docker-compose exec app-csv bash
+uvicorn main:app --reload
+```

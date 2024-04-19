@@ -12,9 +12,6 @@ def get_postcode(item):
             return ['null']
      #Almacena cada codigo
      postcodes = [codes.get('postcode', 'N/A') for codes in result]
+     
 
      return postcodes,data
-
-
-
-

@@ -1,10 +1,25 @@
-###
-POST http://localhost:5000/upload_csv
-Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+# GET: Obtener códigos postales del servicio de códigos postales
+GET https://api.postcodes.io/postcodes?
 
-------WebKitFormBoundary7MA4YWxkTrZu0gW
-Content-Disposition: form-data; name="file"; filename="coordenates.csv"
-Content-Type: text/csv
+GET http://127.0.0.1:8000/add_postcodes
 
-@./coordenates.csv
-------WebKitFormBoundary7MA4YWxkTrZu0gW--
+# POST: Enviar códigos postales al servicio de códigos postales
+POST https://api.postcodes.io/postcodes?
+Content-Type: application/json
+
+{
+    "data": [
+        {
+            "coordenadas": [lon=-3.758607, lat=57.540178],
+            "postcode": "IV12 5LD"
+        },
+        {
+            "coordenadas": [lon=-1.474217, lat=52.923454],
+            "postcode": "DE1 9RB"
+        },
+        {
+            "coordenadas": [lon=-0.729985, lat=50.871446],
+            "postcode": "PO18 0QD"
+        }
+    ]
+}
