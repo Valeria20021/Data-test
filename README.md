@@ -1,9 +1,9 @@
 # Git Flow
 
 El flujo de trabajo consta de 3 ramas; master, develop y feature/send_bd. 
-feature/send_db= se realizan las nuevas funcionalidades
-develop= se realizan pequeños cambios y correcciones
-master= una vez funcione correctamente la funcionalidad, se suben cambios a la rama master.
+#### feature/send_db= se realizan las nuevas funcionalidades
+#### develop= se realizan pequeños cambios y correcciones
+#### master= una vez funcione correctamente la funcionalidad, se suben cambios a la rama master.
 El flujo de cambios es el siguiente:
 Aprobar los cambios de feature/send_bd
 ```sh
