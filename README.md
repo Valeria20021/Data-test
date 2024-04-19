@@ -50,8 +50,9 @@ source env/bin/activate
 pip3 install -r requirements.txt
 ```
 
-Para inciar el servidor con la API de insertar datos en la base de datos se ejecuta dentro de /app:
+Para inciar el servidor:
 ```sh
+cd app
 uvicorn main:app --reload
 ```
 
