@@ -2,7 +2,7 @@ import postcodes
 import read_csv
 from mongo_connect import collection
 from fastapi import FastAPI, HTTPException
-import uuid
+import sys
 
 app = FastAPI()
 
@@ -45,9 +45,11 @@ def send_to_bd_codes():
         if list_to_insert:
             #collection MongoDB
             collection.insert_many(list_to_insert)
-            return {"message": f"Coordenadas añadidas a la base de datos", "data": list_to_insert}
+            print("Coordenadas añadidas a la base de datos")
         else:
-            return {"message": "No se encontraron datos para insertar", "data": []}
+            print("No se encontraron datos para insertar")
+
+        sys.exit()
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")
