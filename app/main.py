@@ -1,6 +1,6 @@
-import postcodes_api
-import read_csv
-from mongo_connect import collection
+import controller.postcodes_api as postcodes_api
+from model import read_csv
+from controller.mongo_connect import collection
 from send_logs import log_message
 from fastapi import FastAPI, HTTPException
 import subprocess
@@ -8,7 +8,7 @@ import subprocess
 
 app = FastAPI()
 
-RATE_LIMIT = 50
+RATE_LIMIT = 2
 
 def run():
     formatted_coordinates = read_csv.format_coordinates_get()
@@ -48,6 +48,7 @@ def send_to_bd_codes():
             result = collection.insert_many(list_to_insert)
             if result.acknowledged:
                 print("Coordenadas añadidas a la base de datos")
+                return "Coordenadas añadidas a la base de datos"
             else:
                 print("Error al añadir coordenadas a la base de datos")
         else:
