@@ -39,4 +39,8 @@ Finalmente pasar los cambios de develop a la rama master
 ```sh
 git checkout master
 git merge develop
+<<<<<<< HEAD
 ```
+=======
+```
+>>>>>>> develop
