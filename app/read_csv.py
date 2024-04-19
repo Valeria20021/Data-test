@@ -3,12 +3,20 @@ import numpy as np
 import os
 
 
-def read_csv(path):
+def read_csv():
+  #Ruta de archivo de variables de entorno
+  path= os.getenv("CSV_PATH_FILE")
+
   if not os.path.exists(path):
     raise FileNotFoundError(f'No se encuentra el archivo {path}')
+  
+  if not path.endswith('.csv'):
+    raise ValueError(f'El archivo {path} no es un archivo CSV')
 
+  csv_data = pd.read_csv(path, sep='|')
 
-  csv_data = pd.read_csv(path, sep='|').replace("nan", np.nan)
+  #formato key-value que retorna diccionarios
+  data = csv_data.to_dict('records')
 
   #Eliminar datos duplicados o sin valor
   csv_data.drop_duplicates(inplace=True)
@@ -20,19 +28,16 @@ def read_csv(path):
   
   if csv_data['lat'].isnull().any() or csv_data['lon'].isnull().any():
      raise ValueError("El archivo CSV contiene valores NaN en las columnas 'lat' o 'lon'.")
-
-
-    #formato key-value que retorna diccionarios
-  data = csv_data.to_dict('records')
-
+  
   return data
 
 
-def format_coordinates_get(data):
+
+def format_coordinates_get():
     
+     data = read_csv()
      #Formato para GET
      formatted_coordinates = []
-
      
      for item in data:
          lat = str(item['lat']).replace("'", "").replace(",",".")
@@ -43,4 +48,3 @@ def format_coordinates_get(data):
           formatted_coordinates.append(f"lon={lon}&lat={lat}")
 
      return formatted_coordinates
-
