@@ -1,11 +1,14 @@
 import postcodes
 import read_csv
 from mongo_connect import collection
+from send_logs import log_message
 from fastapi import FastAPI, HTTPException
-import sys
+import subprocess
+
 
 app = FastAPI()
 
+RATE_LIMIT = 5
 
 def run():
     csv_path_file = './coordenates.csv'
@@ -22,13 +25,13 @@ def run():
             requests_sent += 1
 
         except ValueError as e:
-            print(f"No se encuentra código postal para las coordenadas: {item}")
+            log_message(f"No se encuentra código postal para las coordenadas: {item}")
             continue
         
-        if requests_sent > 7:
+        if requests_sent > RATE_LIMIT:
             break
 
-# Agregar el documento a la lista de documentos a insertar
+        # Agregar los datos a la lista a insertar
         list_postcodes_insert.append({
             'coordenadas': item,
             'postcode': outcode,
@@ -44,12 +47,16 @@ def send_to_bd_codes():
         list_to_insert = run()
         if list_to_insert:
             #collection MongoDB
-            collection.insert_many(list_to_insert)
-            print("Coordenadas añadidas a la base de datos")
+            result = collection.insert_many(list_to_insert)
+            if result.acknowledged:
+                print("Coordenadas añadidas a la base de datos")
+            else:
+                print("Error al añadir coordenadas a la base de datos")
         else:
             print("No se encontraron datos para insertar")
 
-        sys.exit()
+        #termina proceso del servidor
+        subprocess.run(["pkill", "-f", "uvicorn"])
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Error interno del servidor: {e}")

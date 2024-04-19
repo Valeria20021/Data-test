@@ -2,11 +2,15 @@ import pandas as pd
 import numpy as np
 import os
 
+
 def read_csv(path):
   if not os.path.exists(path):
     raise FileNotFoundError(f'No se encuentra el archivo {path}')
+  
+  if not path.endswith('.csv'):
+    raise ValueError(f'El archivo {path} no es un archivo CSV')
 
-  csv_data = pd.read_csv(path, sep='|').replace("nan", np.nan)
+  csv_data = pd.read_csv(path, sep='|')
 
   #Eliminar datos duplicados o sin valor
   csv_data.drop_duplicates(inplace=True)
